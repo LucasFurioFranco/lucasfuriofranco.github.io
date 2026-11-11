@@ -1,4 +1,5 @@
 # lucasfuriofranco.github.io
 GitHub User Page
-
-[Limk: https://lucasfuriofranco.github.io](https://lucasfuriofranco.github.io)
+<a href="https://lucasfuriofranco.github.io" target="_blank">
+    Link
+</a>
