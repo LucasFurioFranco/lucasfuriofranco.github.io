@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LFF-Inicio</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LFF-Inicio</title>
 
-    <script src="web_components.js" defer></script>
+        <script src="web_components.js" defer></script>
 
-</head>
-<body>
-    <header-component></header-component>
-    
-    <main data-type="LFF-Index">
-        <h1>LFF-Inicio</h1>
-    </main>
+        <style>
+            /* Estilo local exclusivo da grade do catálogo */
+            .catalog-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            }
+            
+            .products-grid {
+            display: grid;
+            /* Cria colunas automáticas: cada card terá no mínimo 250px de largura, 
+                e o resto do espaço é distribuído igualmente (1fr) */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem; /* Espaçamento bonito entre os cards (vertical e horizontal) */
+            margin-top: 1.5rem;
+            }
 
-    <footer-component></footer-component>
-</body>
+        </style>
+
+    </head>
+
+    <!--neck> :D </neck-->
+
+    <body>
+        <header-component></header-component>
+        
+        <main data-type="LFF-Index" style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem;">
+            <h1>LFF-Inicio</h1>
+
+
+            <!-- O container que usa o CSS Grid -->
+            <section class="products-grid">
+                <product-card name="Teclado Mecânico RGB" price="350.00" sku="TEC-01" category="Periféricos" image="images/teclado.jpg"></product-card>
+                <product-card name="Mouse Gamer Sem Fio" price="180.00" sku="MOU-02" category="Periféricos" image="images/mouse.jpg"></product-card>
+                <product-card name="Monitor Ultrawide 29''" price="1290.00" sku="MON-03" category="Monitores" image="images/monitor.jpg"></product-card>
+            </section>
+
+        </main>
+
+        <footer-component></footer-component>
+        
+    </body>
 </html>
