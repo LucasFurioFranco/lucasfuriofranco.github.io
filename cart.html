@@ -11,8 +11,20 @@
 <body>
     <header-component></header-component>
     
-    <main data-type="LFF-Cart">
+    <main data-type="LFF-Cart" data-type="LFF-Index" style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem;">
         <h1>LFF-Carrinho</h1>
+        
+        <div style="border: 1px solid #e1e4e8; border-radius: 6px; overflow: hidden; margin-top: 1rem;">
+            <!-- Cabeçalho da tabela estático -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; padding: 10px 16px; background: #f1f8ff; font-weight: bold; font-size: 0.85rem; color: #586069; border-bottom: 1px solid #e1e4e8;">
+            <div>Produtos</div>
+            </div>
+
+            <!-- Linhas geradas pelos Web Components -->
+            <product-row name="Teclado Mecânico RGB" price="350.00" sku="TEC-01" category="Periféricos"></product-row>
+            <product-row name="Mouse Sem Fio Ergonômico" price="180.00" sku="MOU-02" category="Periféricos"></product-row>
+            <product-row name="Monitor Ultrawide 29''" price="1290.00" sku="MON-03" category="Monitores"></product-row>
+        </div>
     </main>
 
     <footer-component></footer-component>
