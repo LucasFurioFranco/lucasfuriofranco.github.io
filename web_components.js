@@ -1,3 +1,5 @@
+
+
 class NewComponent extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
