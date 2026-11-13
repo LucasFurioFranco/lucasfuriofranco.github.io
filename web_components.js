@@ -16,15 +16,16 @@ class HeaderComponent extends HTMLElement {
         <h2>Meu E-commerce</h2>
         <nav>
           <a href="index.html" style="color:#fff; margin-right: 15px;">Home</a>
-          <a href="catalog.html" style="color:#fff; margin-right: 15px;">Catálogo</a>
-          <a href="cart.html" style="color:#fff;">Carrinho (<span id="cart-count">0</span>)</a>
+          <a href="propagandas.html" style="color:#fff; margin-right: 15px;">Propagandas</a>
+          <a href="contato.html" style="color:#fff;">Contato</a>
         </nav>
       </header>
     `;
 
 
     //GTM Call
-    var gtag_gtm = document.createElement("script");
+    var gtag_gtm;
+    gtag_gtm = document.createElement("script");
     gtag_gtm.setAttribute("src", "https://www.googletagmanager.com/gtm.js?id=GTM-NRM8NXCG");
     gtag_gtm.setAttribute("async", true); //Yep, I know it's not necessary as I'm using JS to load it, but makes me happier to add it here!
     document.body.appendChild(gtag_gtm);
