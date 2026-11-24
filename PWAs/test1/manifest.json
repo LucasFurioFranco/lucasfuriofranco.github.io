@@ -1,6 +1,6 @@
 {
-  "name": "My Progressive Web App",
-  "short_name": "MyPWA",
+  "name": "LFF - Progressive Web App - Test 1",
+  "short_name": "LFF-PWA-Test 1",
   "description": "A fast, installable web application.",
   "start_url": "/PWAs/test1",
   "scope": "/PWAs/test1",
