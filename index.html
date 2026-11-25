@@ -1,13 +1,21 @@
+
+        
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
+        <script src="/component/ws-gtm.js" defer></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LFF-Inicio</title>
+        <style src="/static/global.css"></style>
 
-        <script src="web_components.js" defer></script>
 
-        <style>
+        <title>LFF-Blank</title>
+        
+        <script src="/component/ws-footer.js" defer></script>
+        <script src="/component/ws-header.js" defer></script>
+        <script src="/component/ws-product-bundle.js" defer></script>
+
+                <style>
             /* Estilo local exclusivo da grade do catálogo */
             .catalog-container {
             max-width: 1100px;
@@ -28,25 +36,24 @@
 
     </head>
 
-    <!--neck> :D </neck-->
+
 
     <body>
-        <header-component></header-component>
-        
-        <main data-type="LFF-Index" style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem;">
-            <h1>LFF-Inicio</h1>
+        <ws-header></ws-header>
 
+        <main>
+            <h1>LFF-Inicio</h1>
 
             <!-- O container que usa o CSS Grid -->
             <section class="products-grid">
-                <product-card name="Teclado Mecânico RGB" price="350.00" sku="TEC-01" category="Periféricos" image="images/teclado.jpg"></product-card>
-                <product-card name="Mouse Gamer Sem Fio" price="180.00" sku="MOU-02" category="Periféricos" image="images/mouse.jpg"></product-card>
-                <product-card name="Monitor Ultrawide 29''" price="1290.00" sku="MON-03" category="Monitores" image="images/monitor.jpg"></product-card>
+                <ws-product-card name="Teclado Mecânico RGB" price="350.00" sku="TEC-01" category="Periféricos" image="images/teclado.jpg"></ws-product-card>
+                <ws-product-card name="Mouse Gamer Sem Fio" price="180.00" sku="MOU-02" category="Periféricos" image="images/mouse.jpg"></ws-product-card>
+                <ws-product-card name="Monitor Ultrawide 29''" price="1290.00" sku="MON-03" category="Monitores" image="images/monitor.jpg"></ws-product-card>
             </section>
 
         </main>
 
-        <footer-component></footer-component>
-        
+        <ws-footer></ws-footer>
     </body>
 </html>
+''

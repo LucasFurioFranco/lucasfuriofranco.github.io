@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LFF-Carrinho</title>
+    <head>
+        <meta charset="UTF-8">
+        <script src="/component/ws-gtm.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style src="/static/global.css"></style>
 
-    <script src="web_components.js" defer></script>
 
-</head>
-<body>
-    <header-component></header-component>
-    
-    <main data-type="LFF-Cart" data-type="LFF-Index" style="max-width: 1000px; margin: 2rem auto; padding: 0 1rem;">
-        <h1>LFF-Carrinho</h1>
+        <title>LFF-Cart</title>
         
-        <div style="border: 1px solid #e1e4e8; border-radius: 6px; overflow: hidden; margin-top: 1rem;">
-            <!-- Cabeçalho da tabela estático -->
-            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; padding: 10px 16px; background: #f1f8ff; font-weight: bold; font-size: 0.85rem; color: #586069; border-bottom: 1px solid #e1e4e8;">
-            <div>Produtos</div>
+        <script src="/component/ws-footer.js" defer></script>
+        <script src="/component/ws-header.js" defer></script>
+        <script src="/component/ws-product-bundle.js" defer></script>
+
+    </head>
+
+
+
+    <body>
+        <ws-header></ws-header>
+
+        <main>
+            <h1>LFF-Carrinho</h1>
+            
+            <div style="border: 1px solid #e1e4e8; border-radius: 6px; overflow: hidden; margin-top: 1rem;">
+                <!-- Cabeçalho da tabela estático -->
+                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; padding: 10px 16px; background: #f1f8ff; font-weight: bold; font-size: 0.85rem; color: #586069; border-bottom: 1px solid #e1e4e8;">
+                <div>Produtos</div>
+                </div>
+
+                <!-- Linhas geradas pelos Web Components -->
+                <ws-product-row name="Teclado Mecânico RGB" price="350.00" sku="TEC-01" category="Periféricos"></ws-product-row>
+                <ws-product-row name="Mouse Sem Fio Ergonômico" price="180.00" sku="MOU-02" category="Periféricos"></ws-product-row>
+                <ws-product-row name="Monitor Ultrawide 29''" price="1290.00" sku="MON-03" category="Monitores"></ws-product-row>
             </div>
+        </main>
 
-            <!-- Linhas geradas pelos Web Components -->
-            <product-row name="Teclado Mecânico RGB" price="350.00" sku="TEC-01" category="Periféricos"></product-row>
-            <product-row name="Mouse Sem Fio Ergonômico" price="180.00" sku="MOU-02" category="Periféricos"></product-row>
-            <product-row name="Monitor Ultrawide 29''" price="1290.00" sku="MON-03" category="Monitores"></product-row>
-        </div>
-    </main>
+        <main data-type="LFF-TODO-ALTERAR">
+            <h1>LFF-Blank</h1>
+        </main>
 
-    <footer-component></footer-component>
-</body>
+        <ws-footer></ws-footer>
+    </body>
 </html>
+''
