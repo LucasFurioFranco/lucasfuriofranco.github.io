@@ -1,0 +1,31 @@
+{
+  "name": "Respiração em Quadrado",
+  "short_name": "Quadrado",
+  "description": "Timer de respiração em quadrado com toques a cada segundo e transição a cada 4 segundos.",
+  "start_url": "/apps/respiracao-quadrado/",
+  "scope": "/apps/respiracao-quadrado/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskeable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

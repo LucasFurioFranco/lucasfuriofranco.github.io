@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <script src="/component/ws-gtm.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style src="/static/global.css"></style>
+
+
+        <title>LFF-Apps</title>
+        
+        <script src="/component/ws-footer.js" defer></script>
+        <script src="/component/ws-header.js" defer></script>
+        <script src="/component/ws-product-bundle.js" defer></script>
+
+        <link rel="manifest" href="/pwa/sqare-breathing/manifest.json" />
+        <meta name="theme-color" content="#0f172a" />
+        <link rel="apple-touch-icon" href="pwa/sqare-breathing/icons/icon-192x192.png" />
+
+    </head>
+
+
+
+    <body>
+        <ws-header></ws-header>
+
+        <main>
+
+            <h1>PWA Apps</h1>
+
+            <ul class="pwa-list">
+                <li><a href="pwa/_blank/index.html">_Blank</a></li>
+                
+                <li><a href="pwa/test1/index.html">Test 1</a></li>
+
+                <li><a href="pwa/sqare-breathing/index.html">Square breathing</a></li>
+            </ul>
+
+        </main>
+
+        <ws-footer></ws-footer>
+
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker.register("/pwa/square-breathing/sw.js");
+                });
+            }
+        </script>
+    </body>
+</html>
+''

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <script>
+
+            window.dataLayer = window.dataLayer || [];
+            var cycles = 1,
+                total_secs = 0;
+
+        </script>
+
+        <meta charset="UTF-8">
+        <script src="/component/ws-gtm.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style src="/static/global.css"></style>
+        <link rel="icon" href="icons/favicon.ico" sizes="any" />
+
+
+        <title>LFF-Square Breathing</title>
+        
+        <script src="/component/ws-footer.js" defer></script>
+        <script src="/component/ws-header.js" defer></script>
+        <script src="/component/ws-product-bundle.js" defer></script>
+        
+        
+        
+        <!--PWA Req Start-->
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#1a73e8" />
+        <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+        <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+        </script>
+        <!--PWA Req End-->
+
+
+
+
+        <style>
+            body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            }
+            .box {
+            width: 220px;
+            height: 220px;
+            border: 4px solid #38bdf8;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            }
+            .phase {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            }
+            .count {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #38bdf8;
+            }
+            button {
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            }
+            button.stop {
+            background: #f43f5e;
+            color: #fff;
+            }
+        </style>
+    </head>
+
+
+
+    <body>
+        <ws-header></ws-header>
+
+        <main>
+            <h1>Square Breathing</h1>
+
+            <div class="box" id="box">
+                <div class="phase" id="phase">Pronto</div>
+                <div class="count" id="count">4</div>
+                <div class="cycle" id="cycle">Ciclo <span id="cycle_value">0</span></div>
+            </div>
+
+            <button id="toggleBtn">Iniciar</button>
+
+            <script>
+                const phases = ["Inspire", "Segure", "Expire", "Segure"];
+                let audioCtx = null;
+                let timerId = null;
+                let second = 0;
+
+                const phaseEl = document.getElementById("phase");
+                const countEl = document.getElementById("count");
+                const toggleBtn = document.getElementById("toggleBtn");
+                const boxEl = document.getElementById("box");
+
+                // Gera som sintetizado (isPhaseChange = true toca o som diferente de 4s)
+                function playBeep(isPhaseChange) {
+                    if (!audioCtx) {
+                        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    }
+                    if (audioCtx.state === "suspended") {
+                        audioCtx.resume();
+                    }
+
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    osc.type = isPhaseChange ? "triangle" : "sine";
+                    osc.frequency.setValueAtTime(isPhaseChange ? 450 : 440, audioCtx.currentTime);
+
+                    const duration = isPhaseChange ? 0.25 : 0.08;
+                    gain.gain.setValueAtTime(isPhaseChange ? 0.3 : 0.15, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + duration);
+                }
+
+                function tick() {
+                    const stepInPhase = second % 4; // 0, 1, 2, 3
+                    const phaseIndex = Math.floor(second / 4) % 4;
+                    const isPhaseChange = stepInPhase === 0;
+
+                    second++;
+                    total_secs++;
+                    cycles += isPhaseChange ? 0.25 : 0;
+
+                    document.querySelector("#cycle_value").innerText="" + cycles;
+
+                    phaseEl.textContent = phases[phaseIndex];
+                    countEl.textContent = stepInPhase + 1;
+
+                    // Destaque visual sutil a cada 4 segundos
+                    boxEl.style.borderColor = isPhaseChange ? "#a855f7" : "#38bdf8";
+
+                    playBeep(isPhaseChange);
+                }
+
+                function start() {
+                    second = 0;
+                    tick(); // Toca imediatamente o 1º segundo (início do ciclo de 4s)
+                    timerId = setInterval(tick, 1000);
+                    toggleBtn.textContent = "Parar";
+                    toggleBtn.classList.add("stop");
+
+
+                    cycles = 1;
+                    total_secs = 0;
+
+                    document.querySelector("#cycle_value").innerText="" + cycles;
+
+                    window.dataLayer.push({
+                        event:      "square-breathing",
+                        action:     "start",
+                        cycles:     cycles,
+                        total_secs: total_secs
+                    });
+                }
+
+                function stop() {
+                    clearInterval(timerId);
+                    timerId = null;
+                    phaseEl.textContent = "Pronto";
+                    countEl.textContent = "4";
+                    boxEl.style.borderColor = "#38bdf8";
+                    toggleBtn.textContent = "Iniciar";
+                    toggleBtn.classList.remove("stop");
+
+                    cycles = 0;
+                    total_secs = 0;
+
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: "square-breathing",
+                        action: "stop",
+                        cycles:     cycles,
+                        total_secs: total_secs
+                    });
+                }
+
+                toggleBtn.addEventListener("click", () => {
+                    if (timerId) stop();
+                    else start();
+                });
+            </script>
+            
+        </main>
+
+        <ws-footer></ws-footer>
+    </body>
+
+</html>

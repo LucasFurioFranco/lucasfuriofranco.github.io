@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>LFF-PWA-Test 1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/PWAs/test1/icons/favicon.ico" sizes="any" />
+        
+        <!--PWA Req Start-->
+        <link rel="manifest" href="manifest.json" />
+        <meta name="theme-color" content="#1a73e8" />
+        <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+        <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+        </script>
+        <!--PWA Req End-->
+    </head>
+
+
+
+    <body>
+        <header-component></header-component>
+
+        <main>
+            <h1>LFF-PWA-Test 1</h1>
+        </main>
+
+        <footer-component></footer-component>
+    </body>
+
+</html>
