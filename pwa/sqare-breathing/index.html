@@ -180,8 +180,8 @@
                     window.dataLayer.push({
                         event:      "square-breathing",
                         action:     "start",
-                        cycles:     cycles,
-                        total_secs: total_secs
+                        cycles:     undefined,
+                        total_secs: undefined
                     });
                 }
 
@@ -194,16 +194,16 @@
                     toggleBtn.textContent = "Iniciar";
                     toggleBtn.classList.remove("stop");
 
-                    cycles = 0;
-                    total_secs = 0;
-
                     window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({
                         event: "square-breathing",
                         action: "stop",
-                        cycles:     cycles,
-                        total_secs: total_secs
+                        cycles:     0+cycles,
+                        total_secs: 0+total_secs
                     });
+
+                    cycles = 0;
+                    total_secs = 0;
                 }
 
                 toggleBtn.addEventListener("click", () => {
